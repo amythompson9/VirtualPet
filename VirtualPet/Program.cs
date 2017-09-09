@@ -103,11 +103,12 @@ namespace VirtualPet
             //Your VirtualPet class could actually be usable with a completely different interface, 
             //such as a web page or a phone app.You might want to explore how you could use it elsewhere.
 
-            //Hints
 
-            //Don't try to tackle everything at once! Break this project up into smaller chunks, 
-            //and you will find that they are all manageable.
+            Console.WriteLine("Hello. I'm Pineapple Tidbits, and I'm a Teacup Pig. \nI'm your friend and companion, but I also need your love and attention \nto grow and thrive. I'll need food, water, sleep, playtime, and every once \nin awhile I have to go outside to do my business. If you ever want to know \nhow I'm doing, simply ask, 'How are you?'");
+            while (true)
+            {
 
+            }
         }
     }
 }
