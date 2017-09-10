@@ -12,28 +12,33 @@ namespace VirtualPet
         private int playTime;
         private int napTime;
         private int waterMe;
-        private bool goOutside;
+        private string goOutside;
         private string name;
 
         public int FeedMe
         {
             get { return this.feedMe; }
+            set { this.feedMe = value; }
         }
         public int PlayTime
         {
             get { return this.playTime; }
+            set { this.playTime = value; }
         }
         public int NapTime
         {
             get { return this.napTime; }
+            set { this.napTime = value; }
         }
         public int WaterMe
         {
             get { return this.waterMe; }
+            set { this.waterMe = value; }
         }
-        public bool GoOutside
+        public string GoOutside
         {
             get { return this.goOutside; }
+            set { this.goOutside = value; }
         }
         public string Name
         {
@@ -47,15 +52,14 @@ namespace VirtualPet
             this.napTime = napTime;
             this.waterMe = waterMe;
             this.goOutside = goOutside;
-            this.name = name;
         }
         public TeacupPig(string name)
         {
-            this.feedMe = 10;
-            this.playTime = 10;
-            this.napTime = 10;
-            this.waterMe = 10;
-            this.goOutside = true;
+            this.feedMe = 3;
+            this.playTime = 6;
+            this.napTime = 9;
+            this.waterMe = 7;
+            this.goOutside = " ";
             this.name = "Pineapple Tidbits";
         }
         public void Hungry()
@@ -68,23 +72,26 @@ namespace VirtualPet
             else if (this.feedMe >=5 && this.feedMe <=8)
             {
                 Console.WriteLine("I could use a little snack");
+                feedMe += 1;
             }
             else
             {
                 Console.WriteLine("I'm starving. What's for dinner?");
+                feedMe += 5;
             }
         }
 
-        public void Bored()
+        public void Happiness()
         {
             if (this.playTime > 8)
             {
                 Console.WriteLine("I don't feel like playing. I think I could use a nap.");
-                napTime -= 3;
+                napTime -= 4;
             }
             else
             {
                 Console.WriteLine("I'm bored. Let's play!");
+                playTime += 4;
             }
         }
 
@@ -104,7 +111,33 @@ namespace VirtualPet
             if (this.waterMe < 8)
             {
                 Console.WriteLine("I could use a drink");
+                waterMe += 3;
             }
+            else
+            {
+                Console.WriteLine("I have to go outside.");
+                goOutside = "yes";
+            }
+        }
+        public void Potty()
+        {
+            if (goOutside == "no")
+            {
+                Console.WriteLine("No, let's play instead.");
+                playTime -= 3;
+            }
+            else
+            {
+                Console.WriteLine("I have to go outside!");
+            }
+        }
+        public void Status()
+        {
+            Console.WriteLine("Here is Pineapple Tidbit's status: \n{0} = Hunger \n{0} = Happiness \n{0} = Thirst \n{0} = Sleepiness \n{0}= Potty", feedMe, playTime, waterMe, napTime, goOutside);
+        }
+        public void TidbitsNeeds()
+        {
+            Console.WriteLine("So what should we do today? \n1. Feed Tidbits \n2. Water Tidbits \n3. Play with Tidbits \n4. Let Tidbits take a nap \n5. Take Tidbits outside \n6. Do Nothing");
         }
     }
 }

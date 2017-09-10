@@ -10,17 +10,6 @@ namespace VirtualPet
     {
         static void Main(string[] args)
         {
-            //Create a console application for an interactive game - like virtual pet program.
-            //The user must be able to select different tasks or activities from a menu.
-
-            //SKILLS REQUIRED
-            //Loops
-            //Arrays
-            //Methods
-            //Intro to OOP
-            //Defining Classes
-            //Creating Classes and Access Modifiers
-
             //VirtualPet class
             //Fields (at least three)
             //Properties(at least three)
@@ -33,11 +22,6 @@ namespace VirtualPet
             //Display options for interacting with pet
             //Ask user what action to take
             //User's selection should trigger an action
-
-            //Make a virtual pet program.This is your version of a Tamagotchi or DigiPet!
-
-            //This might seem like a daunting task, but we can break it down.
-
             //First, decide what "features" you want to incorporate. 
             //You might be tempted to make this a long list - start small! Think MVP!
 
@@ -64,50 +48,57 @@ namespace VirtualPet
             //We're using a Console interface for now, 
             //so it will likely involve some sort of loop and a menu showing possible actions, 
             //as well as indicating the state of the pet. 
-            //You'll have to decide when to call the Tick method 
-            //if you want it to Tick every time the menu is shown, 
-            //or for a stretch task you could explore using a separate thread to have Ticks occur automatically 
-            //every second.
-
             //Your user interface should live in the Main method of the Program class. 
             //You should also have a VirtualPet class in a separate file.
 
-            //An example user interface is below(you do not have to make yours match this!):
+            TeacupPig tidbits = new TeacupPig("Pineapple Tidbits");
 
-            //Give the pet the ability to take care of some of its own needs
-            //A visual representation of the pet
-            //Calling Tick method
-            //Alternative interfaces
-
-            //Tick() will update any properties or call time - based methods.
-            //The idea behind this method is that every time the menu is shown or some user interaction occurs, 
-            //you could call the Tick() method to cause properties to update. 
-            //You may want to have some of the properties update randomly to make the virtual pet less predictable.
-            //Pets are not robots - they usually have some sort of self-determination! When Tick is called, 
-            //you might want to have your pet take a look at its needs and possibly address one.
-            //You could use a random number generator to have it do things randomly, 
-            //or prioritize things based upon what need is highest.
-            //You could also make your pet uncooperative - when the user tries to feed the pet, for example, 
-            //you might make the pet refuse to eat.
-
-            //Other properties that might update when Tick is called:
-
-
-            //boredom increasing
-            //hunger increasing
-            //sleepiness increasing
-            //Rather than using numbers to convey your pet's status, 
-            //you could have some sort of visual representation of the pet. 
-            //I.e., instead of printing hunger: 50, you could use smileys or ASCII art to show hunger when hunger >= 50.
-
-            //Your VirtualPet class could actually be usable with a completely different interface, 
-            //such as a web page or a phone app.You might want to explore how you could use it elsewhere.
-
-
-            Console.WriteLine("Hello. I'm Pineapple Tidbits, and I'm a Teacup Pig. \nI'm your friend and companion, but I also need your love and attention \nto grow and thrive. I'll need food, water, sleep, playtime, and every once \nin awhile I have to go outside to do my business. If you ever want to know \nhow I'm doing, simply ask, 'How are you?'");
-            while (true)
+            Console.WriteLine("Hello. I'm " + tidbits.Name + ", and I'm a Teacup Pig. \nI'm your friend and companion, but I also need your love and attention \nto grow and thrive. I'll need food, water, sleep, playtime, and every once \nin awhile I have to go outside to do my business. If you ever want to know \nhow I'm doing, simply ask, 'How are you?'");
+            Console.WriteLine("I'll be completely happy when all my needs are met. \nThat means that all my needs should be a perfect '10' \nand I don't have to go outside.");
+            tidbits.TidbitsNeeds();
+            while (tidbits.FeedMe > 0 && tidbits.FeedMe < 11)
             {
-
+                string feedTidbits = "1";
+                string waterTidbits = "2";
+                string playWithTidbits = "3";
+                string letNap = "4";
+                string letTidbitsOut = "5";
+                string doNothing = "6";
+                string doSomething = Console.ReadLine();
+                string askStatus = "How are you?";
+                if (askStatus == doSomething)
+                {
+                    tidbits.Status();
+                }
+                else if (feedTidbits == doSomething)
+                {
+                    tidbits.Hungry();
+                }
+                else if (waterTidbits == doSomething)
+                {
+                    tidbits.Thirsty();
+                }
+                else if (playWithTidbits == doSomething)
+                {
+                    tidbits.Happiness();
+                }   
+                else if (letNap == doSomething)
+                {
+                    tidbits.Tired();
+                }
+                else if (letTidbitsOut == doSomething)
+                {
+                    tidbits.Potty();
+                }
+                else if (doNothing == doSomething)
+                {
+                    Console.WriteLine("Are you sure Tidbits doesn't need anything?");
+                    tidbits.Status();
+                }
+                else
+                {
+                    Console.WriteLine("Tidbits needs his space sometimes, too.  Just don't forget about him.");
+                }
             }
         }
     }
