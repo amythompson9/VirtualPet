@@ -87,22 +87,27 @@ namespace VirtualPet
                 }
                 else if (feedTidbits == doSomething)
                 {
+                    Console.WriteLine("You fed Tidbits.");
                     tidbits.Hungry();
                 }
                 else if (waterTidbits == doSomething)
                 {
+                    Console.WriteLine("You gave Tidbits water.");
                     tidbits.Thirsty();
                 }
                 else if (playWithTidbits == doSomething)
                 {
+                    Console.WriteLine("You played with Tidbits.");
                     tidbits.Happiness();
                 }
                 else if (letNap == doSomething)
                 {
+                    Console.WriteLine("Tidbits is taking a nap.");
                     tidbits.Tired();
                 }
                 else if (letTidbitsOut == doSomething)
                 {
+                    Console.WriteLine("You took Tidbits outside.");
                     tidbits.Potty();
                 }
                 else if (doNothing == doSomething)
