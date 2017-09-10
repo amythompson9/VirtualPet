@@ -54,9 +54,10 @@ namespace VirtualPet
             TeacupPig tidbits = new TeacupPig("Pineapple Tidbits");
 
             Console.WriteLine("Hello. I'm " + tidbits.Name + ", and I'm a Teacup Pig. \nI'm your friend and companion, but I also need your love and attention \nto grow and thrive. I'll need food, water, sleep, playtime, and every once \nin awhile I have to go outside to do my business. If you ever want to know \nhow I'm doing, simply ask, 'How are you?'");
-            Console.WriteLine("I'll be completely happy when all my needs are met. \nThat means that all my needs should be a perfect '10' \nand I don't have to go outside.");
+            Console.WriteLine("I'll be completely happy when all my needs are met. \nThat means that all my needs should be a 10 or more \nand I don't have to go outside.");
             tidbits.TidbitsNeeds();
-            while (tidbits.FeedMe > 0 && tidbits.FeedMe < 11)
+            Console.WriteLine("If you need help taking care of Tidbits, please enter 'Help'.");
+            while (tidbits.FeedMe > 0)
             {
                 string feedTidbits = "1";
                 string waterTidbits = "2";
@@ -64,11 +65,25 @@ namespace VirtualPet
                 string letNap = "4";
                 string letTidbitsOut = "5";
                 string doNothing = "6";
+                string askStatus = "How are you";
+                string askHelp = "help";
+                string quit = "I don't have time for this.";
                 string doSomething = Console.ReadLine();
-                string askStatus = "How are you?";
-                if (askStatus == doSomething)
+                if (askHelp.ToLower() == doSomething.ToLower())
+                {
+                    tidbits.TidbitsNeeds();
+                }
+                else if (askStatus.ToLower() == doSomething.ToLower())
                 {
                     tidbits.Status();
+                }
+                else if (quit.ToLower() == doSomething.ToLower())
+                {
+                    tidbits.Quit();
+                }
+                else if (tidbits.FeedMe >= 10 && tidbits.PlayTime >= 10 && tidbits.NapTime >= 10 && tidbits.WaterMe >= 10 && tidbits.GoOutside == "no")
+                {
+                    tidbits.AllGood();
                 }
                 else if (feedTidbits == doSomething)
                 {
@@ -81,7 +96,7 @@ namespace VirtualPet
                 else if (playWithTidbits == doSomething)
                 {
                     tidbits.Happiness();
-                }   
+                }
                 else if (letNap == doSomething)
                 {
                     tidbits.Tired();

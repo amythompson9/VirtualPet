@@ -45,33 +45,24 @@ namespace VirtualPet
             get { return this.name; }
             set { this.name = value; }
         }
-        public TeacupPig()
-        {
-            this.feedMe = feedMe;
-            this.playTime = playTime;
-            this.napTime = napTime;
-            this.waterMe = waterMe;
-            this.goOutside = goOutside;
-        }
         public TeacupPig(string name)
         {
             this.feedMe = 3;
             this.playTime = 6;
             this.napTime = 9;
             this.waterMe = 7;
-            this.goOutside = " ";
+            this.goOutside = "yes";
             this.name = "Pineapple Tidbits";
         }
         public void Hungry()
         {
-            if (this.feedMe > 9)
+            if (this.feedMe == 10)
             {
-                Console.WriteLine("I'm so full. I think I need a nap.");
-                napTime -= 2;
+                Console.WriteLine("I'm not hungry. What else is there to do?");
             }
-            else if (this.feedMe >=5 && this.feedMe <=8)
+            else if (this.feedMe > 7)
             {
-                Console.WriteLine("I could use a little snack");
+                Console.WriteLine("I'm so full. I need something to drink.");
                 feedMe += 1;
             }
             else
@@ -83,61 +74,88 @@ namespace VirtualPet
 
         public void Happiness()
         {
-            if (this.playTime > 8)
+            if (this.playTime == 10)
             {
-                Console.WriteLine("I don't feel like playing. I think I could use a nap.");
+                Console.WriteLine("We've already played so much today!");
+            }
+            else if (this.playTime > 8)
+            {
+                Console.WriteLine("I'm bored. Let's play!");
                 napTime -= 4;
             }
             else
             {
-                Console.WriteLine("I'm bored. Let's play!");
+                Console.WriteLine("That was so much fun. I'm tuckered out. I think I could use a nap.");
                 playTime += 4;
             }
         }
 
         public void Tired()
         {
-            if (this.napTime < 5)
+            if (this.napTime == 10)
+            {
+                Console.WriteLine("I've slept enough today!");
+            }
+            else if (this.napTime < 5)
             {
                 Console.WriteLine("I think I need a nap.");
             }
             else
             {
-                Console.WriteLine("I'm not very tired.");
+                Console.WriteLine("That was a great nap. I think I could use a snack.");
+                napTime += 2;
             }
         }
         public void Thirsty()
         {
-            if (this.waterMe < 8)
+            if (this.waterMe == 10)
             {
-                Console.WriteLine("I could use a drink");
+                Console.WriteLine("I'm not too thirsty.");
+            }
+            else if (this.waterMe < 8)
+            {
+                Console.WriteLine("Too much to drink, I should go outside.");
                 waterMe += 3;
+                goOutside = "yes";
             }
             else
             {
-                Console.WriteLine("I have to go outside.");
-                goOutside = "yes";
+                Console.WriteLine("I'm thirsty!");
+                goOutside = "no";
             }
         }
         public void Potty()
         {
-            if (goOutside == "no")
+            if (goOutside == "yes")
             {
-                Console.WriteLine("No, let's play instead.");
-                playTime -= 3;
+                Console.WriteLine("Thanks, I feel better. Now let's play!");
+                goOutside = "no";
+            }
+            else if (goOutside == "no")
+            {
+                Console.WriteLine("I have to go outside!");
+                goOutside = "yes";
             }
             else
             {
-                Console.WriteLine("I have to go outside!");
+                Console.WriteLine("Let's go play outside anyway.");
             }
         }
         public void Status()
         {
-            Console.WriteLine("Here is Pineapple Tidbit's status: \n{0} = Hunger \n{0} = Happiness \n{0} = Thirst \n{0} = Sleepiness \n{0}= Potty", feedMe, playTime, waterMe, napTime, goOutside);
+            Console.WriteLine("Here is Pineapple Tidbit's status: \n{0} = Hunger \n{1} = Happiness \n{2} = Thirst \n{3} = Sleepiness \n{4}= Potty", feedMe, playTime, waterMe, napTime, goOutside);
         }
         public void TidbitsNeeds()
         {
             Console.WriteLine("So what should we do today? \n1. Feed Tidbits \n2. Water Tidbits \n3. Play with Tidbits \n4. Let Tidbits take a nap \n5. Take Tidbits outside \n6. Do Nothing");
+        }
+        public void AllGood()
+        {
+            Console.WriteLine("You're a great friend to Tidbits. He's very happy!...for now.");
+        }
+        public void Quit()
+        {
+            Console.WriteLine("A good friend of yours has adopted Tidbits and he has a great home now.");
         }
     }
 }
