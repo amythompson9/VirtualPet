@@ -36,10 +36,6 @@ namespace VirtualPet
                 {
                     tidbits.Status();
                 }
-                else if (quit.ToLower() == doSomething.ToLower())
-                {
-                    tidbits.Quit();
-                }
                 else if (tidbits.FeedMe >= 50 && tidbits.PlayTime >= 50 && tidbits.NapTime >= 50 && tidbits.WaterMe >= 50 && tidbits.GoOutside == "no")
                 {
                     tidbits.AllGood();
@@ -74,8 +70,13 @@ namespace VirtualPet
                     Console.WriteLine("Are you sure Tidbits doesn't need anything?");
                     tidbits.Status();
                 }
+                else if (quit.ToLower() == doSomething.ToLower())
+                {
+                    tidbits.Quit();
+                }
             }
             Console.WriteLine("It doesn't seem like you're ready for the responsibility of having a pet.");
+            return;
         }
     }
 }

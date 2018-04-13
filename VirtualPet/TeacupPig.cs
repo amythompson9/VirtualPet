@@ -152,11 +152,11 @@ namespace VirtualPet
         }
         public void Introduction()
         {
-            Console.WriteLine("Hello. I'm Pineapple Tidbits, and I'm a Teacup Pig. \nI'm your friend and companion, but I also need your love and attention \nto grow and thrive. I'll need food, water, sleep, playtime, and every once \nin awhile I have to go outside to do my business. If you ever want to know \nhow I'm doing, simply ask, 'How are you'");
+            Console.WriteLine("Hello. I'm Pineapple Tidbits, and I'm a Teacup Pig. \nI'm your friend and companion, but I also need your love and attention to grow and thrive. I'll need food, water, \nsleep, playtime, and every once-in-awhile I have to go outside to do my business. \nIf you ever want to know how I'm doing, simply ask, 'How are you'.");
         }
         public void HowToPlay()
         {
-            Console.WriteLine("I'll be completely happy when all my needs are met. \nThat means that all my needs should be a 50 or more \nand I don't have to go outside. \nIf you can no longer take care of Pineapple Tidbits, simpley enter, \n'I don't have time for this'.");
+            Console.WriteLine("I'll be completely happy when all my needs are met. \nThat means that all my needs should be a 50 or more and I don't have to go outside. \nIf you can no longer take care of Pineapple Tidbits, simply enter, \n'I don't have time for this'.");
         }
         public void Status()
         {
@@ -174,5 +174,6 @@ namespace VirtualPet
         {
             Console.WriteLine("A good friend of yours has adopted Tidbits and he has a great home now.");
         }
+        
     }
 }
